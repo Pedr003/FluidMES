@@ -13,8 +13,16 @@ export default function useData(paths, interval = 0) {
     if (pending.current) return;
     pending.current = true;
     try {
+      const requestedPaths = JSON.parse(key);
+      if (
+        requestedPaths.some((path) =>
+          /^\/api\/(pedidos|plantas|rendimentos|paradas)\//.test(path),
+        )
+      ) {
+        await api.post("/api/simulacao/sincronizar/");
+      }
       const responses = await Promise.all(
-        JSON.parse(key).map((path) => api.get(path)),
+        requestedPaths.map((path) => api.get(path)),
       );
       if (active.current) {
         setData(responses.map((response) => response.data));

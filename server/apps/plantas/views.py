@@ -11,11 +11,12 @@ from apps.accounts.permissions import RequestCreateAccess, OwnerAccess
 from apps.accounts.audit import AuditMixin, record
 from apps.producao.models import Pedido, OEERegistro, LoteProducao
 from apps.producao.workflow import enqueue_request
+from apps.producao.simulation_api import SimulationMutationMixin
 from .models import Planta, Clp, Sensor
 from .serializers import PlantaSerializer, ClpSerializer, SensorSerializer
 
 
-class PlantasView(AuditMixin, ModelViewSet):
+class PlantasView(SimulationMutationMixin, AuditMixin, ModelViewSet):
     serializer_class = PlantaSerializer
     permission_classes = [RequestCreateAccess]
     audit_resource = "planta"

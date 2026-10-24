@@ -1,3 +1,10 @@
+# 1.2.2 — demonstração gratuita
+
+- Vercel Services para frontend/Django no mesmo domínio, com Neon Free.
+- Relógio de simulação por requisição autenticada, transacional e isolado por empresa; sem worker contínuo.
+- Migrações no build Production, rotas /admin e arquivos estáticos, guia gratuito.
+- Preservados os fluxos locais, auth e landing.
+
 # Changelog
 
 ## 1.2.1

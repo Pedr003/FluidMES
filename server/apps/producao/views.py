@@ -22,6 +22,7 @@ from .serializers import (
     SolicitacaoSerializer,
 )
 from .workflow import advance_plant, decide_order, decide_request, enqueue_request
+from .simulation_api import SimulationMutationMixin
 
 
 class ReceitasView(AuditMixin, ModelViewSet):
@@ -70,7 +71,7 @@ class ReceitasView(AuditMixin, ModelViewSet):
             )
 
 
-class PedidosView(ModelViewSet):
+class PedidosView(SimulationMutationMixin, ModelViewSet):
     permission_classes = [CompanyMember]
     serializer_class = PedidosSerializer
 
@@ -292,7 +293,7 @@ class RendimentosView(ReadOnlyModelViewSet):
         ).select_related("planta")
 
 
-class ParadasView(AuditMixin, ModelViewSet):
+class ParadasView(SimulationMutationMixin, AuditMixin, ModelViewSet):
     permission_classes = [OwnerAccess]
     serializer_class = ParadaSerializer
     audit_resource = "parada"

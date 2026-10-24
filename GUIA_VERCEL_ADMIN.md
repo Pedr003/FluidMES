@@ -1,3 +1,5 @@
+> Alternativa com servidor persistente. Para a configuração gratuita atual, use [GUIA_GRATUITO.md](GUIA_GRATUITO.md). Não aplique o Blueprint Render para o modo gratuito.
+
 # FluidMES online — Vercel, API persistente e Django Admin
 
 Este pacote prepara a publicação; nenhum serviço online foi criado e nenhum banco existente foi migrado automaticamente. São necessários o repositório GitHub e as contas dos provedores.

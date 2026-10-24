@@ -1,4 +1,7 @@
-# FluidMES 1.2.1
+# FluidMES 1.2.2 — deploy gratuito
+
+Para testar online sem contratar serviços, siga [GUIA_GRATUITO.md](GUIA_GRATUITO.md): Vercel Hobby + Neon Free, incluindo Django Admin. O vercel.json da raiz publica frontend e backend juntos. A configuração Render do guia anterior é uma alternativa paga, dispensável neste modo.
+
 
 MES em React/Vite e Django/DRF, com identidade visual baseada na landing page original, cards operacionais e permissões por cargo.
 
@@ -6,7 +9,7 @@ Leia também **ATUALIZACAO_1.1.1.md** se estiver atualizando uma conta antiga co
 
 ## Publicar e acessar o admin
 
-Leia **GUIA_VERCEL_ADMIN.md**. Esta atualização prepara frontend na Vercel, API/worker em servidor persistente e PostgreSQL online. Inclui configuração HTTPS, arquivos estáticos do Django Admin, script de rotas da Vercel e referência render.yaml. Nenhum recurso foi publicado automaticamente.
+Leia **GUIA_GRATUITO.md** para Vercel Hobby + Neon Free. O projeto gratuito foi reservado; o banco e o primeiro deploy ainda precisam ser concluídos. O acesso administrativo fica em /admin/ depois do deploy, com conta criada por createsuperuser. **GUIA_VERCEL_ADMIN.md** documenta a alternativa anterior com API e worker persistentes.
 
 ## Executar
 
