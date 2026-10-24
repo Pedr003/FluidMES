@@ -1,0 +1,12 @@
+PASS iniciador aplica migrações e inicia API, simulador e Vite sem NameError.
+PASS frontend acessível com Host IPv4 da LAN na porta 5173.
+PASS requisição sem token CSRF rejeitada.
+PASS origem externa não autorizada continua rejeitada.
+PASS cadastro com Host e Origin da LAN cria empresa e Preposto.
+PASS login com cookies e sessão autenticada funciona pelo proxy com origem LAN.
+PASS Preposto cria e consulta planta por HTTP usando os cabeçalhos da LAN.
+PASS host não autorizado continua bloqueado; não há wildcard de hosts.
+PASS terminal exibe o endereço da LAN e mantém API em 127.0.0.1:8000.
+Testes HTTP com cabeçalhos LAN em banco isolado. Firewall e outro dispositivo físico não foram testados neste ambiente.
+
+Nota do ambiente de teste: enumeração de interfaces pelo Node.js é bloqueada neste ambiente. Foi usado um fixture temporário apenas para a exibição de interfaces pelo Vite; sockets, proxy e requisições HTTP executaram normalmente. O fixture não integra o pacote.

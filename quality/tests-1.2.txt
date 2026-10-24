@@ -1,0 +1,10 @@
+Creating test database for alias 'default'...
+..........................................................................
+----------------------------------------------------------------------
+Ran 74 tests in 27.627s
+
+OK
+Destroying test database for alias 'default'...
+Found 74 test(s).
+System check identified no issues (0 silenced).
+owner@example.com agora é Preposto de A. Saia e entre novamente no site.

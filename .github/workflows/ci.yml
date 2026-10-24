@@ -1,0 +1,27 @@
+name: Quality
+on: [push, pull_request]
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+      - run: pip install -r server/requirements.lock
+      - run: python server/manage.py check
+      - run: python server/manage.py makemigrations --check --dry-run
+      - run: python server/manage.py test apps.accounts apps.plantas apps.producao config.test_local_network
+      - run: npm ci
+        working-directory: client
+      - run: npm run lint
+        working-directory: client
+      - run: npm run build
+        working-directory: client
+      - run: npm run test:scroll
+        working-directory: client

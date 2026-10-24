@@ -1,0 +1,12 @@
+Django==5.2.18
+djangorestframework==3.18.3
+djangorestframework-simplejwt==5.5.1
+django-cors-headers==4.9.0
+django-environ==0.14.0
+channels==4.3.2
+channels-redis==4.3.0
+uvicorn[standard]==0.54.0
+celery==5.6.3
+pymodbus==3.13.0
+validate-docbr==2.0.1
+psycopg[binary]==3.2.13

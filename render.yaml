@@ -1,0 +1,45 @@
+# Review the provider's estimated costs before applying this blueprint.
+services:
+  - type: web
+    name: fluidmes-api
+    runtime: python
+    rootDir: server
+    buildCommand: pip install -r requirements.cloud.txt && python manage.py collectstatic --noinput
+    preDeployCommand: python manage.py migrate --noinput
+    startCommand: python -m uvicorn config.asgi:application --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health/
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.12
+      - key: DJANGO_SETTINGS_MODULE
+        value: config.settings.cloud
+      - key: DJANGO_SECRET_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: DJANGO_ALLOWED_HOSTS
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+  - type: worker
+    name: fluidmes-production
+    runtime: python
+    rootDir: server
+    buildCommand: pip install -r requirements.cloud.txt
+    startCommand: python manage.py run_production
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.12
+      - key: DJANGO_SETTINGS_MODULE
+        value: config.settings.cloud
+      - key: DJANGO_SECRET_KEY
+        fromService:
+          name: fluidmes-api
+          type: web
+          envVarKey: DJANGO_SECRET_KEY
+      - key: DATABASE_URL
+        sync: false
+      - key: DJANGO_ALLOWED_HOSTS
+        sync: false
+      - key: FRONTEND_URL
+        sync: false

@@ -1,0 +1,2 @@
+PASS login administrativo em HTTPS e cookie CSRF Secure.
+PASS CSS do Django Admin servido com DEBUG=False e WhiteNoise.

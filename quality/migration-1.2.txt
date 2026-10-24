@@ -1,0 +1,3 @@
+PASS atualização de schema anterior (1.1.4) preserva empresa, planta, receita e pedido.
+PASS capacidade/reset demonstrativos adicionados sem apagar dados existentes.
+PASS pedido aprovado anterior continua na execução de compatibilidade de 10 s.
