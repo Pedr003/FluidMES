@@ -7,7 +7,12 @@
       "installCommand": "npm ci",
       "buildCommand": "npm run build",
       "outputDirectory": "dist",
-      "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+      "rewrites": [
+        {
+          "source": "/((?!api(?:/|$)|admin(?:/|$)|static(?:/|$)).*)",
+          "destination": "/index.html"
+        }
+      ]
     },
     "backend": {
       "root": "server",
@@ -20,19 +25,59 @@
   "headers": [
     {
       "source": "/api/:path*",
-      "headers": [{ "key": "Cache-Control", "value": "private, no-store" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        }
+      ]
     },
     {
       "source": "/admin/:path*",
-      "headers": [{ "key": "Cache-Control", "value": "private, no-store" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        }
+      ]
     }
   ],
   "rewrites": [
-    { "source": "/api", "destination": { "service": "backend" } },
-    { "source": "/api/:path*", "destination": { "service": "backend" } },
-    { "source": "/admin", "destination": { "service": "backend" } },
-    { "source": "/admin/:path*", "destination": { "service": "backend" } },
-    { "source": "/static/:path*", "destination": { "service": "backend" } },
-    { "source": "/(.*)", "destination": { "service": "frontend" } }
+    {
+      "source": "/api",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/admin",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/static/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "frontend"
+      }
+    }
   ]
 }
